@@ -1,0 +1,10 @@
+.idea
+.vscode
+__pychache__
+venv
+.env
+.env.*
+!.env.example
+*.egg-info
+build/
+dist
