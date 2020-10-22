@@ -11,4 +11,5 @@ setuptools.setup(
     long_description=long_description,
     python_requires=">=3.7",
     install_requires=[],
+    url='https://github.com/baspenny/k8s_secretgenerator'
 )
