@@ -1,7 +1,7 @@
 # Kubernetes Secret Generator
 
 This package contains a nice and convienient class to create Kubernetes secret files  
-It can create secrets from .env files or from files using the  
+It can create secrets from .env files or from files using the **absolute**
 path of the file, and reading them.
 
 
@@ -10,7 +10,6 @@ path of the file, and reading them.
 ```
 pip install k8s-secretgenerator
 ```
-
 
 ## Examples
 
@@ -24,6 +23,9 @@ All values will be base64 encoded, just the way Kubernetes likes them.
 ```python  
 # Example:
 
+
+import os
+
 namespace = 'your-awesome-namespace'
 # Define file input
 credentials = [
@@ -32,7 +34,8 @@ credentials = [
         'namespace': namespace,
         'type': 'Opaque',
         'input_files': [
-            {'name': 'service_account.json', 'path': './secrets/service_account.json'},
+            # Please use the absolute path for input
+            {'name': 'service_account.json', 'path': 'secrets/service_account.json'},
         ]
     }
 ]
@@ -42,9 +45,11 @@ env_files = [
         'secret_name': 'env-vars',
         'namespace': namespace,
         'type': 'Opaque',
+        # Please use the absolute path for input
         'input_file': '.env'
     }
 ]
+# Please use the absolute path for output 
 manifest_generator = ManifestGenerator(output_dir='secrets')
 
 manifest_generator.create_from_files(credentials)

@@ -1,6 +1,7 @@
 from typing import List
 import yaml
 import base64
+import os
 
 
 class ManifestGenerator:
@@ -60,7 +61,7 @@ class ManifestGenerator:
                 }
             }
             yaml_dump = yaml.dump(secrets_yaml)
-            with open(f'./{self.output_dir}/secrets-{file.get("secret_name")}.yaml', 'w') as fh:
+            with open(os.path.join(f'{self.output_dir}', f'secrets-{file.get("secret_name")}.yaml'), 'w') as fh:
                 fh.write(yaml_dump)
 
     def create_from_env_files(self, secrets_yaml_files_to_create: List[dict]):
@@ -84,7 +85,7 @@ class ManifestGenerator:
                 }
             }
             yaml_dump = yaml.dump(secrets_yaml)
-            with open(f'./{self.output_dir}/secrets-{secret_name}.yaml', 'w') as fh:
+            with open(os.path.join(f'{self.output_dir}', f'secrets-{secret_name}.yaml'), 'w') as fh:
                 fh.write(yaml_dump)
 
     def __create_base_encoded_str_from_path(self, path: str) -> str:
