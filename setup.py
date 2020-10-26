@@ -10,6 +10,6 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     python_requires=">=3.7",
-    install_requires=[],
+    install_requires=["PyYAML"],
     url='https://github.com/baspenny/k8s_secretgenerator'
 )
