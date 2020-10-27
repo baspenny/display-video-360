@@ -1,0 +1,1 @@
+from .k8s_secret_creator import ManifestGenerator
